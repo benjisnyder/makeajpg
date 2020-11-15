@@ -1,0 +1,91 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'parse/php-sdk',
+1 verbose cli   '--save-dev' ]
+2 info using npm@1.5.0-alpha-1
+3 info using node@v0.10.29
+4 verbose node symlink /usr/local/bin/node
+5 warn package.json boiler@0.1.0 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'parse/php-sdk', null ]
+8 verbose cache add spec="parse/php-sdk" args=["parse/php-sdk",null]
+9 verbose parsed spec { raw: 'parse/php-sdk',
+9 verbose parsed spec   scope: null,
+9 verbose parsed spec   name: null,
+9 verbose parsed spec   rawSpec: 'parse/php-sdk',
+9 verbose parsed spec   spec: 'parse/php-sdk',
+9 verbose parsed spec   type: 'github' }
+10 info maybeGithub Attempting parse/php-sdk from git://github.com/parse/php-sdk
+11 verbose addRemoteGit u="git://github.com/parse/php-sdk" silent=true
+12 silly addRemoteGit parsed { protocol: 'git:',
+12 silly addRemoteGit   slashes: true,
+12 silly addRemoteGit   auth: null,
+12 silly addRemoteGit   host: 'github.com',
+12 silly addRemoteGit   port: null,
+12 silly addRemoteGit   hostname: 'github.com',
+12 silly addRemoteGit   hash: null,
+12 silly addRemoteGit   search: '',
+12 silly addRemoteGit   query: {},
+12 silly addRemoteGit   pathname: '/parse/php-sdk',
+12 silly addRemoteGit   path: '/parse/php-sdk',
+12 silly addRemoteGit   href: 'git://github.com/parse/php-sdk' }
+13 silly lockFile a99721e6-git-github-com-parse-php-sdk git://github.com/parse/php-sdk
+14 verbose lock git://github.com/parse/php-sdk /Users/bensnyder/.npm/a99721e6-git-github-com-parse-php-sdk.lock
+15 verbose addRemoteGit [ 'git://github.com/parse/php-sdk', 'master' ]
+16 verbose git clone git://github.com/parse/php-sdk Cloning into bare repository '/Users/bensnyder/.npm/_git-remotes/git-github-com-parse-php-sdk-a99721e6'...
+16 verbose git clone git://github.com/parse/php-sdk fatal: remote error:
+16 verbose git clone git://github.com/parse/php-sdk   Repository not found.
+17 silly lockFile a99721e6-git-github-com-parse-php-sdk git://github.com/parse/php-sdk
+18 silly lockFile a99721e6-git-github-com-parse-php-sdk git://github.com/parse/php-sdk
+19 info maybeGithub Attempting parse/php-sdk from git+ssh://git@github.com:parse/php-sdk
+20 verbose addRemoteGit u="git+ssh://git@github.com:parse/php-sdk" silent=false
+21 silly addRemoteGit parsed { protocol: 'git+ssh:',
+21 silly addRemoteGit   slashes: true,
+21 silly addRemoteGit   auth: 'git',
+21 silly addRemoteGit   host: 'github.com',
+21 silly addRemoteGit   port: null,
+21 silly addRemoteGit   hostname: 'github.com',
+21 silly addRemoteGit   hash: null,
+21 silly addRemoteGit   search: '',
+21 silly addRemoteGit   query: {},
+21 silly addRemoteGit   pathname: '/:parse/php-sdk',
+21 silly addRemoteGit   path: '/:parse/php-sdk',
+21 silly addRemoteGit   href: 'git+ssh://git@github.com/:parse/php-sdk' }
+22 silly lockFile d8d84ae9-git-github-com-parse-php-sdk git@github.com:parse/php-sdk
+23 verbose lock git@github.com:parse/php-sdk /Users/bensnyder/.npm/d8d84ae9-git-github-com-parse-php-sdk.lock
+24 verbose addRemoteGit [ 'git@github.com:parse/php-sdk', 'master' ]
+25 error git clone git@github.com:parse/php-sdk Cloning into bare repository '/Users/bensnyder/.npm/_git-remotes/git-github-com-parse-php-sdk-d8d84ae9'...
+25 error git clone git@github.com:parse/php-sdk Warning: Permanently added 'github.com,192.30.252.129' (RSA) to the list of known hosts.
+25 error git clone git@github.com:parse/php-sdk Permission denied (publickey).
+25 error git clone git@github.com:parse/php-sdk fatal: Could not read from remote repository.
+25 error git clone git@github.com:parse/php-sdk
+25 error git clone git@github.com:parse/php-sdk Please make sure you have the correct access rights
+25 error git clone git@github.com:parse/php-sdk and the repository exists.
+26 silly lockFile d8d84ae9-git-github-com-parse-php-sdk git@github.com:parse/php-sdk
+27 silly lockFile d8d84ae9-git-github-com-parse-php-sdk git@github.com:parse/php-sdk
+28 error Error: Command failed: Cloning into bare repository '/Users/bensnyder/.npm/_git-remotes/git-github-com-parse-php-sdk-d8d84ae9'...
+28 error Warning: Permanently added 'github.com,192.30.252.129' (RSA) to the list of known hosts.
+28 error Permission denied (publickey).
+28 error fatal: Could not read from remote repository.
+28 error
+28 error Please make sure you have the correct access rights
+28 error and the repository exists.
+28 error
+28 error     at ChildProcess.exithandler (child_process.js:647:15)
+28 error     at ChildProcess.emit (events.js:98:17)
+28 error     at maybeClose (child_process.js:755:16)
+28 error     at Socket.<anonymous> (child_process.js:968:11)
+28 error     at Socket.emit (events.js:95:17)
+28 error     at Pipe.close (net.js:465:12)
+29 error If you need help, you may report this *entire* log,
+29 error including the npm and node versions, at:
+29 error     <http://github.com/npm/npm/issues>
+30 error System Darwin 13.3.0
+31 error command "node" "/usr/local/bin/npm" "install" "parse/php-sdk" "--save-dev"
+32 error cwd /Users/bensnyder/Sites/tempjpg
+33 error node -v v0.10.29
+34 error npm -v 1.5.0-alpha-1
+35 error code 128
+36 verbose exit [ 1, true ]

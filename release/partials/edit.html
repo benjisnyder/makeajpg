@@ -1,0 +1,293 @@
+<div id="edit_plane" jpg-deselect>
+	<div id="jpg_artboard_container">
+		<div id="jpg_artboard" jpg-artboard data-width="artboard.width" data-height="artboard.height" data-fill="artboard.fill" data-type="artboard.type">
+		</div>
+		<div id="jpg_handles" jpg-layer-handles class="{{artboard.currentLayer.className == 'Arrow' ? 'line' : ''}}" layer="artboard.currentLayer" ng-show="artboard.currentLayer != null"></div>
+	</div>
+
+	<div id="jpg_draw_plane" jpg-draw-plane></div>
+</div>
+
+<div id="layer_adds">
+	<a class="action_link icon-image" jpg-toggle="images" jpg-shortcut="73" title="Shortcut: i" href=""></a>
+	<a class="action_link icon-add-text" jpg-click-broadcast="jpgAddText" jpg-shortcut="84" title="Shortcut: t" href="">T+</a>
+	<!--a class="action_link icon-square" jpg-click-broadcast="jpgAddRect" jpg-shortcut="82" title="Shortcut: r" href=""></a-->
+	<!--a class="action_link icon-circle" jpg-click-broadcast="jpgAddEllipse" jpg-shortcut="67" title="Shortcut: c" href=""></a-->
+	
+	<a class="action_link icon-square" jpg-draw jpg-draw-evt="jpgDrawRect" jpg-shortcut="82" title="Shortcut: r" href=""></a>
+	<a class="action_link icon-circle" jpg-draw jpg-draw-evt="jpgDrawEllipse" jpg-shortcut="69" title="Shortcut: e" href=""></a>
+	<a class="action_link icon-arrow-right2" jpg-draw jpg-draw-evt="jpgDrawArrow" jpg-shortcut="65" title="Shortcut: a" href=""></a>
+</div>
+
+<form id="control_panel" class="panel">
+	<div>
+		<a jpg-click-broadcast="jpgExport" class="button" jpg-shortcut="83" title="Shortcut: s" href="">Preview and Share</a>
+	</div>
+
+	<div>
+		<label>Type</label>
+		<select id="artboard_type" name="artboard_type" ng-model="artboard.type">
+			<option value="image/jpeg">JPEG</option>
+			<option value="image/png">PNG</option>
+		</select>
+	</div>
+	
+	<div>
+		<label for="artboard_width">Width</label>
+		<input id="artboard_width" name="artboard_width" ng-model="artboard.width" jpg-input type="number" max="1500" />
+	</div>
+
+	<div>
+		<label for="artboard_height">Height</label>
+		<input id="artboard_height" name="artboard_height" ng-model="artboard.height" jpg-input type="number" max="1500" />
+	</div>
+
+	<div>
+		<label for="artboard_fill">Fill</label>
+		<input id="artboard_fill" name="artboard_fill" ng-model="artboard.fill" type="text" jpg-input jpg-color />
+	</div>
+
+	<div ng-show="showFitButton()">
+		<a class="button light" href="" jpg-click-broadcast="jpgFitCanvasToSelectedLayer" jpg-shortcut="70" title="Shortcut: f">Fit to Selection</a>
+	</div>
+
+	<a href="" id="help_link" jpg-click-broadcast="jpgShowTips" jpg-shortcut="72" title="Shortcut: h">Help (h)</a>
+</form>
+
+<div id="images" class="panel slider">
+	<input id="upload_image" name="upload_image" jpg-upload type="file" />
+	<div id="images_scroller" class="scroller">
+	</div>
+</div>
+
+<form id="layer_panel" class="panel">
+	<div id="layers_container">
+		<jpg-layer-manager layers="artboard.layers" current="artboard.currentLayer" order="-index"></jpg-layer-manager>
+
+		<div id="layer_controls">
+			<a jpg-click-broadcast="jpgLayerUp" class="button light" href="" jpg-shortcut="221" title="Shortcut: ]">&#8593;</a>
+			<a jpg-click-broadcast="jpgLayerDown" class="button light" href="" jpg-shortcut="219" title="Shortcut: [">&#8595;</a>
+			<a jpg-click-broadcast="jpgLayerDelete" class="button light" href="">X</a>
+		</div>
+
+		<span class="panel_note dark {{artboard.layers.length > 0 ? 'ng-hide' : ''}}">Add a Layer</span>
+	</div>
+
+	<div id="layer_properties" class="{{artboard.currentLayer.className}}">
+		<div ng-show="artboard.currentLayer">
+			<div id="l_text" class="text_input">
+				<label for="layer_text">Text</label>
+				<input id="layer_text" name="layer_text" ng-model="artboard.currentLayer.attrs.text" jpg-input layer-prop="text" />
+			</div>
+
+			<div id="l_size">
+				<label for="layer_size">Size</label>
+				<input id="layer_size" name="layer_size" ng-model="artboard.currentLayer.attrs.fontSize" jpg-input layer-prop="fontSize" type="number" />
+			</div>
+
+			<div id="l_color">
+				<label for="layer_color">Color</label>
+				<input id="layer_color" name="layer_color" ng-model="artboard.currentLayer.attrs.fill" jpg-input layer-prop="fill" jpg-color />
+			</div>
+
+			<div id="l_family" class="text_input">
+				<label for="layer_family">Font</label>
+				<select id="layer_family" name="layer_family" ng-model="artboard.currentLayer.attrs.fontFamily" jpg-input="change" layer-prop="fontFamily" ng-options="k as v for (k, v) in fontFamilies"></select>
+			</div>
+
+			<div id="l_align" class="text_input">
+				<label for="layer_align">Align</label>
+				<select id="layer_align" name="layer_align" ng-model="artboard.currentLayer.attrs.align" jpg-input="change" layer-prop="align" ng-options="k as v for (k, v) in textAlignments"></select>
+			</div>
+
+			<div id="l_style" class="text_input">
+				<label for="l_style">Style</label>
+				<select id="l_style" name="l_style" ng-model="artboard.currentLayer.attrs.fontStyle" jpg-input="change" layer-prop="fontStyle" ng-options="k as v for (k, v) in fontStyles"></select>
+			</div>
+
+			<div id="l_spacing" class="text_input">
+				<label for="layer_lineheight">Spacing</label>
+				<input id="layer_lineheight" name="layer_lineheight" ng-model="artboard.currentLayer.attrs.lineHeight" jpg-input layer-prop="lineHeight" type="number" step="0.1" jpg-validate="decimal" />
+			</div>
+
+			<div id="l_x">
+				<label for="layer_x">X</label>
+				<input id="layer_x" name="layer_x" ng-model="artboard.currentLayer.attrs.adjustedX" jpg-input layer-prop="adjustedX" type="number" />
+			</div>
+
+			<div id="l_y">
+				<label for="layer_y">Y</label>
+				<input id="layer_y" name="layer_y" ng-model="artboard.currentLayer.attrs.adjustedY" jpg-input layer-prop="adjustedY" type="number" />
+			</div>
+
+			<div id="l_width">
+				<label for="layer_w">Width</label>
+				<input id="layer_w" name="layer_w" ng-model="artboard.currentLayer.attrs.adjustedWidth" jpg-input layer-prop="adjustedWidth" type="number" />
+			</div>
+
+			<div id="l_height">
+				<label for="layer_h">Height</label>
+				<input id="layer_h" name="layer_h" ng-model="artboard.currentLayer.attrs.adjustedHeight" jpg-input layer-prop="adjustedHeight" type="number" />
+			</div>
+
+			<div id="l_fill">
+				<label for="layer_fill">Fill</label>
+				<input id="layer_fill" name="layer_fill" ng-model="artboard.currentLayer.attrs.fill" jpg-input layer-prop="fill" jpg-color />
+			</div>
+
+			<div id="l_outline">
+				<label for="layer_stroke">Outline</label>
+				<input id="layer_stroke" name="layer_stroke" ng-model="artboard.currentLayer.attrs.stroke" jpg-input layer-prop="stroke" jpg-color />
+			</div>
+			
+			<div id="l_border">
+				<label for="layer_stroke_width">Border</label>
+				<input id="layer_stroke_width" name="layer_stroke_width" ng-model="artboard.currentLayer.attrs.strokeWidth" jpg-input layer-prop="strokeWidth" type="number" />
+			</div>
+
+			<div id="l_arrow_r" class="hide">
+				<label for="layer_arrow_r">Arrow 1</label>
+				<input id="layer_arrow_r" name="layer_arrow_r" ng-model="artboard.currentLayer.attrs.arrowRight" jpg-input layer-prop="arrowRight" type="number" />
+			</div>
+
+			<div id="l_arrow_l" class="hide">
+				<label for="layer_arrow_l">Arrow 2</label>
+				<input id="layer_arrow_l" name="layer_arrow_l" ng-model="artboard.currentLayer.attrs.arrowLeft" jpg-input layer-prop="arrowLeft" type="number" />
+			</div>
+
+			<div id="l_opacity">
+				<label for="layer_fillp">Opacity</label>
+				<input id="layer_fillp" name="layer_fillp" ng-model="artboard.currentLayer.attrs.opacity" jpg-input layer-prop="opacity" type="number" min="0" max="1" step="0.1" jpg-validate="decimal" />
+			</div>
+
+			<div id="l_shadow" class="checkbox">
+				<input id="layer_shadow" name="layer_shadow" type="checkbox" ng-model="artboard.currentLayer.attrs.shadowEnabled" jpg-click-broadcast="jpgToggleShadow" /><label for="layer_shadow">Shadow</label>
+			</div>
+
+			<div ng-show="artboard.currentLayer.attrs.shadowEnabled">
+				<div id="l_shadowcolor">
+					<label for="l_shadowcolor">Color</label>
+					<input id="l_shadowcolor" name="l_shadowcolor" ng-model="artboard.currentLayer.attrs.shadowColor" jpg-input layer-prop="shadowColor" jpg-color />
+				</div>
+
+				<div id="l_shadowx">
+					<label for="l_shadowx">X</label>
+					<input id="l_shadowx" name="l_shadowx" ng-model="artboard.currentLayer.attrs.shadowOffsetX" jpg-input layer-prop="shadowOffsetX" type="number" />
+				</div>
+
+				<div id="l_shadowy">
+					<label for="l_shadowy">X</label>
+					<input id="l_shadowy" name="l_shadowy" ng-model="artboard.currentLayer.attrs.shadowOffsetY" jpg-input layer-prop="shadowOffsetY" type="number" />
+				</div>
+
+				<div id="l_shadowblur">
+					<label for="l_shadowblur">Blur</label>
+					<input id="l_shadowblur" name="l_shadowblur" ng-model="artboard.currentLayer.attrs.shadowBlur" jpg-input layer-prop="shadowBlur" type="number" />
+				</div>
+
+				<div id="l_shadowopacity">
+					<label for="l_shadowopacity">Opacity</label>
+					<input id="l_shadowopacity" name="l_shadowopacity" ng-model="artboard.currentLayer.attrs.shadowOpacity" jpg-input layer-prop="shadowOpacity" type="number" min="0" max="1" step="0.1" jpg-validate="decimal" />
+				</div>
+			</div>
+
+			<!--div>
+				<label for="layer_deg">Rotation</label>
+				<input id="layer_deg" name="layer_deg" ng-model="artboard.currentLayer.attrs.rotation" jpg-input layer-prop="rotation" type="number" max="360" min="0" />
+			</div-->
+
+			<!--a jpg-click-broadcast="jpgFlipLayerY" class="action_link" href="">Flip Vertically</a>
+			<a jpg-click-broadcast="jpgFlipLayerX" class="action_link" href="">Flip Horizontally</a-->
+		</div>
+
+		<span class="panel_note" ng-hide="artboard.currentLayer">Select a Layer</span>
+	</div>
+</form>
+
+<div id="preview" class="modal {{ artboard.stageDataURL ? 'visible' : '' }}">
+	<div class="modal_header">
+		<a href="" jpg-click-broadcast="jpgClosePreview" jpg-shortcut="27" title="Shortcut: esc">Close</a>
+
+		<div class="modal_controls" ng-hide="previewURL != null">
+			<a class="button" ng-hide="loading" jpg-click-broadcast="jpgSharePreview" href="">Share</a> 
+			<span class="loading_button button" ng-show="loading">
+				<img src="images/spinner.gif" alt="Loading..." title="Loading..." />
+			</span>
+		</div>
+
+		<!--div class="modal_controls" ng-show="previewURL != null"><em>Share me:</em> <a id="share_url" title="Share URL" href="http://{{previewURL}}" target="_blank">{{previewURL}}</a></div-->
+
+		<div class="modal_controls" ng-show="previewURL != null">
+			<input id="preview_url" jpg-share-input name="preview_url" type="text" value="{{previewURL}}" title="Preview URL">
+		</div>
+	</div>
+	<img id="preview_img" ng-src="{{artboard.stageDataURL}}" />
+</div>
+
+<div id="tips" class="modal {{ showTips ? 'visible' : '' }}">
+	<div class="modal_header">
+		<h3>Tips &amp; Shortcuts</h3>
+		<a href="" jpg-click-broadcast="jpgCloseTips" jpg-shortcut="27" title="Shortcut: esc">Close</a>
+
+		<em id="app_version">Make a JPG <span app-version></span></em>
+	</div>
+	<div class="modal_body">
+		<h4>Shortcuts</h4>
+		<p>
+			<strong>Add image: </strong><span>i (or drag and drop)</span>
+		</p>
+		<p>
+			<strong>Add text: </strong><span>t</span>
+		</p>
+		<p>
+			<strong>Draw rectangle: </strong><span>r</span>
+		</p>
+		<p>
+			<strong>Draw ellipse: </strong><span>e</span>
+		</p>
+		<p>
+			<strong>Save: </strong><span>s</span>
+		</p>
+		<p>
+			<strong>Close modal: </strong><span>esc</span>
+		</p>
+		<p>
+			<strong>Move layer: </strong><span>arrow keys</span>
+		</p>
+		<p>
+			<strong>Layer up: </strong><span>]</span>
+		</p>
+		<p>
+			<strong>Layer down: </strong><span>[</span>
+		</p>
+		<p>
+			<strong>Delete layer: </strong><span>delete key</span>
+		</p>
+		<p>
+			<strong>Copy layer: </strong><span>cntrl/cmnd + c</span>
+		</p>
+		<p>
+			<strong>Paste layer: </strong><span>cntrl/cmnd + v</span>
+		</p>
+		<p>
+			<strong>Fit to selected: </strong><span>f</span>
+		</p>
+		
+		<h4>Tips</h4>
+		<p>
+			<em>Hold shift while moving objects with the keyboard to move them <span class="highlight">more rapidly</span>.</em>
+		</p>
+		<p>
+			<em>To maintain an object's <span class="highlight">aspect ratio</span>, hold shift while resizing. The opposite is true for images.</em>
+		</p>
+		<p>
+			<em>To make a transparent <span class="highlight">.PNG</span>, set the canvas fill color to "transparent".</em>
+		</p>
+		<p>
+			<em>Most color inputs take <span class="highlight">CSS color values</span>, you can pass RGBA, hex, and color names.</em>
+		</p>
+	</div>
+</div>
+
+<div id="jpg_color_picker" jpg-color-picker palette="palette" alphas="alphas"></div>
+<jpg-keyboard></jpg-keyboard>

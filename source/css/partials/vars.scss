@@ -1,0 +1,98 @@
+$bg-color-1: rgba(0,0,0,0.05);
+$bg-color-2: rgba(245,245,245,0.6);
+$bg-color-3: rgba(210,210,222,0.6);
+$bg-color-4: rgba(255,255,255,0.9);
+$bg-color-dark: rgba(0,0,0,0.85);
+$bg-color-darker: rgba(0,0,0,0.95);
+
+$border-1: 1px solid rgba(0, 0, 0, .1);
+$border-1-5: 1px solid rgba(0, 0, 0, .15);
+$border-2: 1px solid rgba(0, 0, 0, .2);
+
+$border-radius-1: 3px;
+
+$box-shadow: 0 0px 2px #aaa;
+
+$font-color-1: #ccc;
+$font-color-2: #333;
+$font-color-3: #afafaf;
+
+$font-size-1: 11px;
+$font-size-2: 13px;
+$font-size-3: 18px;
+
+$action-color-1: #16b1f2;
+$action-color-2: #57ca0b;
+$action-color-3: #f7f7f7;
+
+$ms-1: 200ms;
+
+$side-widths: 180px;
+
+@mixin abs-all() {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+@mixin vertical-middle() {
+	position: relative;
+	top: 50%;
+	-webkit-transform:translateY(-50%);
+	   -moz-transform:translateY(-50%);
+	    -ms-transform:translateY(-50%);
+	     -o-transform:translateY(-50%);
+	        transform:translateY(-50%);
+}
+
+@mixin horizontal-middle() {
+	position: relative;
+	left: 50%;
+	-webkit-transform:translateX(-50%);
+	   -moz-transform:translateX(-50%);
+	    -ms-transform:translateX(-50%);
+	     -o-transform:translateX(-50%);
+	        transform:translateX(-50%);
+}
+
+@mixin fifty-fifty($x, $y) {
+	-webkit-transform:translateX($x) translateY($y);
+	   -moz-transform:translateX($x) translateY($y);
+	    -ms-transform:translateX($x) translateY($y);
+	     -o-transform:translateX($x) translateY($y);
+	        transform:translateX($x) translateY($y);
+}
+
+@mixin transition($prop, $length) {
+	-webkit-transition: $prop $length linear;
+       -moz-transition: $prop $length linear;
+         -o-transition: $prop $length linear;
+        -ms-transition: $prop $length linear;
+            transition: $prop $length linear;
+}
+
+@mixin transition-all($length) {
+	-webkit-transition: all $length linear;
+       -moz-transition: all $length linear;
+         -o-transition: all $length linear;
+        -ms-transition: all $length linear;
+            transition: all $length linear;
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	 -moz-border-radius: $radius;
+	  -ms-border-radius: $radius;
+	      border-radius: $radius;
+}
+
+@mixin border-radius-multi($radius1, $radius2, $radius3, $radius4) {
+	-webkit-border-radius: $radius1 $radius2 $radius3 $radius4;
+	 -moz-border-radius: $radius1 $radius2 $radius3 $radius4;
+	  -ms-border-radius: $radius1 $radius2 $radius3 $radius4;
+	      border-radius: $radius1 $radius2 $radius3 $radius4;
+}

@@ -1,0 +1,24 @@
+@import 'partials/vars';
+@import 'partials/reset';
+@import 'partials/essentials';
+
+/* VIEW */
+
+#jpg_viewer {
+	@include abs-all();
+	overflow: auto;
+	text-align: center;
+}
+
+#jpg_viewer .note, #not_found {
+	@include fifty-fifty(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+#jpg_viewer img {
+	display: inline-block;
+	max-width:90%;
+	margin: 50px 0;
+}

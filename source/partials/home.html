@@ -1,0 +1,63 @@
+<h1 id="logo">Make a JPG</h1> 
+<nav id="nav"><a href="/#/about">About</a></nav>
+
+<div class="article_scroller">
+	<div class="article">
+		<div id="hero" class="call_to_action">
+			<img src="/images/makeajpg.png" alt="Make a JPG" title="Make a JPG" />
+			<p>
+				<a class="button" href="/#/new">New Image</a>
+				<span class="note">or drop an image here</span>
+			</p>
+		</div>
+		
+		<div class="info">
+			<div class="pod">
+				<h2>Make an Image.</h2>
+				<p>Make a JPG is a free tool for image collaboration. You can use art, photos, and text to make JPG or PNG images.</p>
+			</div>
+			<div class="pod">
+				<h2>Share Your Work.</h2>
+				<p>Make an image then share the link with friends and collegues. Share it with us at <a href="https://twitter.com/makeajpg">@makeajpg</a></p>
+			</div>
+			<div class="pod">
+				<h2>Fast. Free. No account.</h2>
+				<p>Make a JPG is a free tool that does not require an account. Start by dropping an image on this page.</p>
+			</div>
+		</div>
+
+		<h2 class="section"><span>Templates</span></h2>
+
+		<!-- spinner from http://tobiasahlin.com/spinkit/ -->
+		<div class="spinner" ng-show="templates == null">
+		  <div class="bounce1"></div>
+		  <div class="bounce2"></div>
+		  <div class="bounce3"></div>
+		</div>
+
+		<div class="row" ng-show="templates != null">
+			<a class="template" ng-repeat="t in templates" href="#/edit/{{t.id}}">
+				<img ng-src="{{t.src}}" title="{{t.title}}" />
+				<span>{{t.title}}</span>
+			</a>
+		</div>
+
+		<div class="info">
+			<h2>FAQ</h2>
+			<dl>
+				<dt>Which browsers can I use to Make a JPG?</dt>
+				<dd>Currently, we only support Chrome, Firefox, Safari, and Internet Explorer 9 and higher. Eventually we will support mobile browsers. Since this is a beta version, some features might not work or there could be bugs. Yuck!</dd>
+				<dt>How long can I share my images on Make a JPG?</dt>
+				<dd>For now, we do not delete images shared on Make a JPG unless they violate our <a href="/#/terms">terms</a>. Though, this is not a guarantee that they will be available forever because, you know, it cost money to store those images! Eventually we will probably detect activity on images and delete those images that are no longer being used.</dd>
+				<dt>Do you store the files I upload?</dt>
+				<dd>No we don't store the actual file you upload. They never reach our servers since we process all images in the browser. Though, we can store the art board data and do store the flattened image that it produces.</dd>
+				<dt>Can I save my art board for later editing?</dt>
+				<dd>Nope. But, as long as your browser tab is open with that art board, you can save and share the image. We hope to offer some form of saving art boards in the future.</dd>
+				<dt>What if I have more questions about Make a JPG?</dt>
+				<dd>Email info@makeajpg.com or follow us on Twitter <a href="https://twitter.com/makeajpg">@makeajpg</a></dd>
+				<dt>How can I support Make a JPG?</dt>
+				<dd>You support Make a JPG by sharing images. Instead, donate to charity. Here's a few: <a target="_blank" href="http://www.wcs.org/">Wildlife Conservation Society</a>, <a target="_blank" href="http://www.alsa.org/">ALS Association</a>, <a target="_blank" href="https://donations.bcrfcure.org/donate-now">The Breast Cancer Research Foundation</a>. </dd>
+			</dl>
+		</div>
+	</div>
+</div>

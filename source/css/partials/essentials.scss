@@ -1,0 +1,85 @@
+html, body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	color: $font-color-2;
+	overflow: hidden;
+}
+
+body {
+	background: $bg-color-1;
+}
+
+h1 {
+	margin: 0 0 15px;
+	font-size: $font-size-3;
+}
+
+a, a:visited, a:hover {
+	text-decoration: none;
+	color: $action-color-1;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a.action_link, a.action_link:visited {
+	color: $font-color-2;
+}
+
+a.action_link:hover, a.action_link.selected {
+	color: $action-color-1;
+}
+
+.button, .button:visited, .button:hover {
+	display: inline-block;
+	border: 1px solid darken($action-color-2, 10%);
+	padding: 7px 9px;
+	background: $action-color-2;
+	font-size: $font-size-2;
+	color: #fff;
+	@include border-radius($border-radius-1);
+	@include transition(background-color, $ms-1);
+}
+
+.button.light, .button.light:visited, .button.light:hover {
+	border: 1px solid darken($action-color-3, 15%);
+	background: $action-color-3;
+	color: $font-color-2;
+}
+
+.button:hover {
+	background: lighten($action-color-2, 5%);
+	text-decoration: none;
+}
+
+.button.light:hover {
+	background: lighten($action-color-3, 5%);
+}
+
+#logo a, #logo a:hover, #logo a:visited {
+	color: $font-color-2;
+}
+
+#logo, #nav {
+	float: left;
+	position:relative;
+	z-index: 1;
+	padding: 15px;
+	background: $bg-color-2;
+}
+
+#logo, #nav, #footer {
+	background: $bg-color-2;
+}
+
+#nav {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#nav a {
+	display:inline-block;
+	margin: 0 5px;
+}
