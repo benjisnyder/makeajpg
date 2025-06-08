@@ -1238,8 +1238,10 @@ angular.module('myApp.services', []).
 			_sessionPreview = null,
 			_defaultJSON = '{"attrs":{"width":500,"height":300},"type":"image/jpeg","className":"Stage","children":[{"attrs":{"width":640,"height":360},"className":"Layer","children":[{"attrs":{"x":0,"y":0,"width":640,"height":360,"fill":"#ffffff"},"className":"Rect"}]},{"attrs":{"width":640,"height":360},"className":"Layer","children":[]}]}';
 
-		try {
-			Parse.initialize("TLEOYqL4I2QgTX0GpEzg3oD1Xv6Q3s2MiVSAEcri", "JXPYsPUbIN6Noriyy6mLrFamiuilKsMOaIfoKgzN");
+                try {
+                        var parseAppId = window.PARSE_APP_ID || "TLEOYqL4I2QgTX0GpEzg3oD1Xv6Q3s2MiVSAEcri";
+                        var parseJsKey = window.PARSE_JS_KEY || "JXPYsPUbIN6Noriyy6mLrFamiuilKsMOaIfoKgzN";
+                        Parse.initialize(parseAppId, parseJsKey);
 			// TODO: a more accurate way of detecting an internet connection, user could have Parse cached
 			_connected = true;
 		} catch (e) {

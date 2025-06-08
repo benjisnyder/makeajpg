@@ -1,7 +1,8 @@
 
 
 <?php 
-	require '../vendor/autoload.php';
+        require '../vendor/autoload.php';
+        require '../vendor/parseConfig.php';
  
 	use Parse\ParseClient;
 	use Parse\ParseException;
@@ -9,8 +10,11 @@
 
 $urlSegs = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'));
 
-	if (isset($_GET['v'])) {
-		ParseClient::initialize('TLEOYqL4I2QgTX0GpEzg3oD1Xv6Q3s2MiVSAEcri', 'bBZdCUKkAol8wuNJoX6rEYcYayMytmnoq5g8HycN', 'VqRv8wcSjOPDkX6Qhytc4A3vBIoRXs5xmQi2ruCj');
+        if (isset($_GET['v'])) {
+                $appId = getenv('PARSE_APP_ID') ?: parseConfig::APPID;
+                $restKey = getenv('PARSE_REST_KEY') ?: parseConfig::RESTKEY;
+                $masterKey = getenv('PARSE_MASTER_KEY') ?: parseConfig::MASTERKEY;
+                ParseClient::initialize($appId, $restKey, $masterKey);
 		$viewVar = $_GET['v'];
 		$query = new ParseQuery("Preview");
 
