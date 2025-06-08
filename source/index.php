@@ -63,7 +63,7 @@ $urlSegs = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '
 </body>
 </html>
 
-<? } else { ?>
+<?php } else { ?>
 <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
